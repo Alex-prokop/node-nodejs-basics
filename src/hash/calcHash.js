@@ -1,10 +1,9 @@
 import { createHash } from 'node:crypto';
 import { createReadStream } from 'node:fs';
-import { fileURLToPath } from 'node:url';
 import path from 'node:path';
+import { getEsmPaths } from '../utils/getEsmPaths.js';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const { __dirname } = getEsmPaths(import.meta.url);
 
 const calculateHash = async () => {
   const filePath = path.join(__dirname, 'files', 'fileToCalculateHashFor.txt');
